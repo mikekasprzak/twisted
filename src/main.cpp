@@ -19,7 +19,7 @@ using namespace std;
 #include "PickUp.h"
 #include "Game.h"
 // - ------------------------------------------------------------------------------------------ - //
-Matrix3x3 ViewMatrix;
+Matrix3x3 ViewMatrix = Matrix3x3::Identity;
 // - ------------------------------------------------------------------------------------------ - //
 int main( int argc, char* argv ) {
 	// Initialize Allegro //

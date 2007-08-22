@@ -75,19 +75,35 @@ public:
 		int Value = 255;
 		if (!IsActive)
 			Value = 128;
-		
+			
 		// Draw Rectangle parts //
 		for ( size_t idx = 0; idx < Rect.size(); idx++ ) {
-			rect(
+			MatrixRect(
 				Target,
-				(int)(Rect[idx].P1().x + Pos.x), (int)(Rect[idx].P1().y + Pos.y),
-				(int)(Rect[idx].P2().x + Pos.x), (int)(Rect[idx].P2().y + Pos.y),
+				ViewMatrix,
+				Rect2D(
+					(Rect[idx].P1().x + Pos.x), (Rect[idx].P1().y + Pos.y),
+					(Rect[idx].P2().x + Pos.x), (Rect[idx].P2().y + Pos.y)
+					),
 				makecol( IsSolid || (!IsBlockCollision || !IsPlayerCollision)?Value:0, IsPushable || !IsBlockCollision?Value:0, IsClimbable || !IsPlayerCollision?Value:0 )
 				);
 		}
 		
 		// Draw center point //
-		circle( Target, (int)Pos.x, (int)Pos.y, 2, makecol( Value, Value, Value ) );
+		MatrixCircle( Target, ViewMatrix, Pos, 2, makecol( Value, Value, Value ) );
+		
+//		// Draw Rectangle parts //
+//		for ( size_t idx = 0; idx < Rect.size(); idx++ ) {
+//			rect(
+//				Target,
+//				(int)(Rect[idx].P1().x + Pos.x), (int)(Rect[idx].P1().y + Pos.y),
+//				(int)(Rect[idx].P2().x + Pos.x), (int)(Rect[idx].P2().y + Pos.y),
+//				makecol( IsSolid || (!IsBlockCollision || !IsPlayerCollision)?Value:0, IsPushable || !IsBlockCollision?Value:0, IsClimbable || !IsPlayerCollision?Value:0 )
+//				);
+//		}
+//		
+//		// Draw center point //
+//		circle( Target, (int)Pos.x, (int)Pos.y, 2, makecol( Value, Value, Value ) );
 	}	
 public:
 	void Solve( cBlock& Vs, const Real& SolveRatio ) {

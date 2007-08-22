@@ -61,6 +61,7 @@ inline const Vector2D Vector2D::ApplyMatrix( const Matrix2x2& _Vs ) const {
 // - ------------------------------------------------------------------------------------------ - //
 inline const Vector3D Vector3D::ApplyMatrix( const Matrix3x3& _Vs ) const {
 	return (this->ToMatrix3x1() * _Vs).ToVector3D();
+	//return (_Vs * this->ToMatrix1x3()).ToVector3D();
 }
 // - ------------------------------------------------------------------------------------------ - //
 
