@@ -27,8 +27,8 @@ int main( int argc, char* argv ) {
 	cout << "Captain!  We're under attack!" << endl;
 	
 	const Matrix3x3 HomeMatrix(
-		Real::One, Real::Zero, Real::Zero,
-		Real::Zero, -Real::One, Real::Zero,
+		Real::Half, Real::Zero, Real::Zero,
+		Real::Zero, -Real::Half, Real::Zero,
 		Real(400), Real(300), Real::One
 		);
 	
@@ -67,8 +67,8 @@ int main( int argc, char* argv ) {
 			clear_to_color( Buffer, makecol(30, 0, 0) );
 
 			Game.Step();
-			ViewMatrix = HomeMatrix;
-			ViewMatrix *= Orientation;
+			ViewMatrix = Orientation;
+			ViewMatrix *= HomeMatrix;
 			Game.Draw( Buffer );
 			
 			// Sync and copy buffer to screen //

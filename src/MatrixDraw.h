@@ -44,6 +44,8 @@ void MatrixCircle( BITMAP* Target, const Matrix3x3& Matrix, const Vector2D& Pos,
 	
 	// Draw our circle //
 	circle( Target, (int)Point.x, (int)Point.y, (int)Radius, Color );
+	
+	// TODO: use the matrix somehow to calculate the scale, and scale up/down the radius
 }
 // - ------------------------------------------------------------------------------------------ - //
 #endif // __MATRIXDRAW_H__ //

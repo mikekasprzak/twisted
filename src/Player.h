@@ -230,9 +230,9 @@ public:
 						if ( FoundContact ) {
 							GravityNormal = MostTangentContact;
 							//Matrix3x3 Orientation;
-							Orientation(0,0) = GravityNormal.Tangent().x;
+							Orientation(0,0) = -GravityNormal.Tangent().x;
 							Orientation(0,1) = -GravityNormal.Tangent().y;
-							Orientation(1,0) = GravityNormal.x;
+							Orientation(1,0) = -GravityNormal.x;
 							Orientation(1,1) = -GravityNormal.y;
 						}
 					}
@@ -264,6 +264,17 @@ public:
 				// Set friction to suit no contacts //
 				Friction = Real( 0.998 );
 			}
+			
+//			static float Stup = 0;
+//			Stup += 0.001;
+			
+//			Orientation(0,0) = Real(Stup).Cos();
+//			Orientation(0,1) = Real(Stup).Sin();
+//			Orientation(1,0) = -Real(Stup).Sin();
+//			Orientation(1,1) = Real(Stup).Cos();
+						
+			Orientation(0,2) = -Pos.x;
+			Orientation(1,2) = -Pos.y;
 		}
 	}
 	
