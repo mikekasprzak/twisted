@@ -16,27 +16,27 @@ public:
 public:
 	cGame() :
 		Gravity( 0.2 ),
-		GravityNormal( 0, 1 ) 
+		GravityNormal( 0, -1 ) 
 	{
 		// Test Map //
-		Player.push_back( cPlayer( Vector2D(610, 264) ) );
+		Player.push_back( cPlayer( Vector2D(210, -36) ) );
 		
-		PickUp.push_back( cPickUp( Vector2D(300, 300) ) );
+		PickUp.push_back( cPickUp( Vector2D(-100, 0) ) );
 		
 		// Static Collision (climbable, not movable at all) //
-		Block.push_back( cBlock( Vector2D( 400, 300 ), true, false, true ) );
+		Block.push_back( cBlock( Vector2D( 0, 0 ), true, false, true ) );
 		Block.back().Rect.push_back( Rect2D( Vector2D(-350,-225), Vector2D(700,50) ) );
 		Block.back().Rect.push_back( Rect2D( Vector2D(-150,225), Vector2D(500,50) ) );
 		Block.back().Rect.push_back( Rect2D( Vector2D(-350,-225), Vector2D(50,500) ) );
 		Block.back().Rect.push_back( Rect2D( Vector2D(350,-225), Vector2D(50,500) ) );
 		
 		// Pushable, non climbable block //
-		Block.push_back( cBlock( Vector2D(400, 400), false, true, true ) );
+		Block.push_back( cBlock( Vector2D(0, 100), false, true, true ) );
 		Block.back().Rect.push_back( Rect2D( Vector2D(-100,-50), Vector2D(200,50) ) );
 		Block.back().Rect.push_back( Rect2D( Vector2D(-50,0), Vector2D(100,100) ) );
 		
 		// Climbable, non pushable block //
-		Block.push_back( cBlock( Vector2D(220, 200), false, false, true ) );
+		Block.push_back( cBlock( Vector2D(-180, -100), false, false, true ) );
 		Block.back().Rect.push_back( Rect2D( Vector2D(-100,-50), Vector2D(200,50) ) );
 		Block.back().Rect.push_back( Rect2D( Vector2D(-50,0), Vector2D(100,100) ) );		
 	}

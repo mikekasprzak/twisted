@@ -25,13 +25,13 @@ Matrix3x3 ViewMatrix;
 int main( int argc, char* argv ) {
 	cout << "Captain!  We're under attack!" << endl;
 	
-	const Matrix3x3 Identity2(
+	const Matrix3x3 HomeMatrix(
 		Real::One, Real::Zero, Real::Zero,
-		Real::Zero, Real::One, Real::Zero,
-		Real(0), Real::Zero, Real::One
+		Real::Zero, -Real::One, Real::Zero,
+		Real(400), Real(300), Real::One
 		);	
 	
-	ViewMatrix = Identity2;
+	ViewMatrix = HomeMatrix;
 	
 	cout << ViewMatrix(0,0) << " " << ViewMatrix(1,0) << " " << ViewMatrix(2,0) << endl;
 	cout << ViewMatrix(0,1) << " " << ViewMatrix(1,1) << " " << ViewMatrix(2,1) << endl;

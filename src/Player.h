@@ -84,7 +84,7 @@ public:
 	
 	cContact Contact;
 public:
-	cPlayer( const Vector2D& _Pos, const Vector2D& _GravityNormal = Vector2D( 0, 1 ) ) :
+	cPlayer( const Vector2D& _Pos, const Vector2D& _GravityNormal = Vector2D( 0, -1 ) ) :
 		Pos( _Pos ),
 		Old( _Pos ),
 		Home( _Pos ),
@@ -133,11 +133,11 @@ public:
 			Real Stick = Real::Zero;
 			
 			if ( key[ KEY_LEFT ] ) {
-				Stick = -Real::One;
+				Stick = Real::One;
 				PressedWalk++;
 			}
 			else if ( key[ KEY_RIGHT ] ) {
-				Stick = Real::One;
+				Stick = -Real::One;
 				PressedWalk++;
 			}
 			else {
@@ -229,6 +229,11 @@ public:
 						// Take "most tangent" contact as new normal, if one was found //
 						if ( FoundContact ) {
 							GravityNormal = MostTangentContact;
+							Matrix3x3 Orientation;
+							Orientation[0] = GravityNormal.Tangent().x;
+							Orientation[1] = GravityNormal.Tangent().y;
+							Orientation[3] = GravityNormal.x;
+							Orientation[4] = GravityNormal.y;
 						}
 					}
 				}
