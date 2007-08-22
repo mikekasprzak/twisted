@@ -21,6 +21,7 @@ using namespace std;
 #include "Game.h"
 // - ------------------------------------------------------------------------------------------ - //
 Matrix3x3 ViewMatrix;
+Matrix3x3 Orientation;
 // - ------------------------------------------------------------------------------------------ - //
 int main( int argc, char* argv ) {
 	cout << "Captain!  We're under attack!" << endl;
@@ -29,13 +30,17 @@ int main( int argc, char* argv ) {
 		Real::One, Real::Zero, Real::Zero,
 		Real::Zero, -Real::One, Real::Zero,
 		Real(400), Real(300), Real::One
+		);
+	
+	Orientation = Matrix3x3(
+		Real::One, Real::Zero, Real::Zero,
+		Real::Zero, Real::One, Real::Zero,
+		Real::Zero, Real::Zero, Real::One
 		);	
-	
-	ViewMatrix = HomeMatrix;
-	
-	cout << ViewMatrix(0,0) << " " << ViewMatrix(1,0) << " " << ViewMatrix(2,0) << endl;
-	cout << ViewMatrix(0,1) << " " << ViewMatrix(1,1) << " " << ViewMatrix(2,1) << endl;
-	cout << ViewMatrix(0,2) << " " << ViewMatrix(1,2) << " " << ViewMatrix(2,2) << endl;
+
+//	cout << ViewMatrix(0,0) << " " << ViewMatrix(1,0) << " " << ViewMatrix(2,0) << endl;
+//	cout << ViewMatrix(0,1) << " " << ViewMatrix(1,1) << " " << ViewMatrix(2,1) << endl;
+//	cout << ViewMatrix(0,2) << " " << ViewMatrix(1,2) << " " << ViewMatrix(2,2) << endl;
 	
 	
 	
@@ -62,6 +67,8 @@ int main( int argc, char* argv ) {
 			clear_to_color( Buffer, makecol(30, 0, 0) );
 
 			Game.Step();
+			ViewMatrix = HomeMatrix;
+			ViewMatrix *= Orientation;
 			Game.Draw( Buffer );
 			
 			// Sync and copy buffer to screen //
@@ -73,6 +80,11 @@ int main( int argc, char* argv ) {
 			while( key[ KEY_SPACE ] ) {
 				// Step by pressing enter //
 				if ( key[ KEY_ENTER ] ) {
+					cout << Orientation(0,0) << " " << Orientation(1,0) << " " << Orientation(2,0) << endl;
+					cout << Orientation(0,1) << " " << Orientation(1,1) << " " << Orientation(2,1) << endl;
+					cout << Orientation(0,2) << " " << Orientation(1,2) << " " << Orientation(2,2) << endl;
+					cout << endl;
+					
 					while( key[ KEY_ENTER ] ) {	
 					}
 					break;

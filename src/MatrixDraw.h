@@ -3,6 +3,7 @@
 #define __MATRIXDRAW_H__
 // - ------------------------------------------------------------------------------------------ - //
 extern Matrix3x3 ViewMatrix;
+extern Matrix3x3 Orientation;
 // - ------------------------------------------------------------------------------------------ - //
 void MatrixRect( BITMAP* Target, const Matrix3x3& Matrix, const Rect2D& Rect, int Color ) {
 	// Get our points //

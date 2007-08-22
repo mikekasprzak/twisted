@@ -229,11 +229,11 @@ public:
 						// Take "most tangent" contact as new normal, if one was found //
 						if ( FoundContact ) {
 							GravityNormal = MostTangentContact;
-							Matrix3x3 Orientation;
-							Orientation[0] = GravityNormal.Tangent().x;
-							Orientation[1] = GravityNormal.Tangent().y;
-							Orientation[3] = GravityNormal.x;
-							Orientation[4] = GravityNormal.y;
+							//Matrix3x3 Orientation;
+							Orientation(0,0) = GravityNormal.Tangent().x;
+							Orientation(0,1) = -GravityNormal.Tangent().y;
+							Orientation(1,0) = GravityNormal.x;
+							Orientation(1,1) = -GravityNormal.y;
 						}
 					}
 				}
