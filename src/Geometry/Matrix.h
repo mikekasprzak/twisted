@@ -9,6 +9,9 @@
 #include "Matrix/Matrix1x2.h"
 #include "Matrix/Matrix2x1.h"
 #include "Matrix/Matrix2x2.h"
+
+#include "Matrix/Matrix1x3.h"
+#include "Matrix/Matrix3x1.h"
 #include "Matrix/Matrix3x3.h"
 // - ------------------------------------------------------------------------------------------ - //
 
@@ -52,16 +55,12 @@ inline const Matrix3x1 operator * ( const Matrix3x1& _a, const Matrix3x3& _b ) {
 // - ------------------------------------------------------------------------------------------ - //
 // Apply a matrix transformation to a vector //
 // - ------------------------------------------------------------------------------------------ - //
-inline const Vector2D Vector2D::ApplyMatrix( const Matrix2x2& _Vs ) {
-	Vector2D Temp;
-	Temp = (this->ToMatrix2x1() * _Vs).ToVector2D();
-	return Temp;
+inline const Vector2D Vector2D::ApplyMatrix( const Matrix2x2& _Vs ) const {
+	return (this->ToMatrix2x1() * _Vs).ToVector2D();
 }
 // - ------------------------------------------------------------------------------------------ - //
-inline const Vector3D Vector3D::ApplyMatrix( const Matrix3x3& _Vs ) {
-	Vector3D Temp;
-	Temp = (this->ToMatrix3x1() * _Vs).ToVector3D();
-	return Temp;
+inline const Vector3D Vector3D::ApplyMatrix( const Matrix3x3& _Vs ) const {
+	return (this->ToMatrix3x1() * _Vs).ToVector3D();
 }
 // - ------------------------------------------------------------------------------------------ - //
 
