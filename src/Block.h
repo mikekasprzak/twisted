@@ -81,7 +81,7 @@ public:
 			MatrixRect(
 				Target,
 				ViewMatrix,
-				Rect2D(
+				Rect2D::Pair(
 					(Rect[idx].P1().x + Pos.x), (Rect[idx].P1().y + Pos.y),
 					(Rect[idx].P2().x + Pos.x), (Rect[idx].P2().y + Pos.y)
 					),

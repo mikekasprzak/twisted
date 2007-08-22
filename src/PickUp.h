@@ -32,7 +32,7 @@ public:
 	void Draw( BITMAP* Target ) {
 		// TODO: Use camera orientable draw code //
 		if ( IsActive ) {
-			circle( Target, (int)Pos.x, (int)Pos.y, (int)Radius, makecol( 128, 0, 255 ) );
+			MatrixCircle( Target, ViewMatrix, Pos, Radius, makecol( 128, 0, 255 ) );
 		}
 	}		
 };

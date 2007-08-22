@@ -267,20 +267,21 @@ public:
 		
 		if ( IsActive ) {
 			// Circle Collision Placeholder //
-			circle( Target, (int)Pos.x, (int)Pos.y, (int)Radius, makecol( 255, 255, 0 ) );
+			MatrixCircle( Target, ViewMatrix, Pos, Radius, makecol( 255, 255, 0 ) );
 			
 			// Gravity Normal //
 			Vector2D GravNormal = Pos + (GravityNormal * Radius);
-			line(
+			MatrixLine(
 				Target,
-				(int)Pos.x, (int)Pos.y,
-				(int)GravNormal.x, (int)GravNormal.y,
+				ViewMatrix,
+				Pos,
+				GravNormal,
 				makecol( 255, 255, 255 )
 				);
 		}
 		else {
 			// Circle Collision Placeholder //
-			circle( Target, (int)Pos.x, (int)Pos.y, (int)Radius, makecol( 128, 128, 0 ) );
+			MatrixCircle( Target, ViewMatrix, Pos, Radius, makecol( 128, 128, 0 ) );
 		}
 	}
 };

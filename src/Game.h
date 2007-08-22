@@ -112,10 +112,10 @@ public:
 		}	
 		
 		for ( size_t idx = 0; idx < Contact.size(); idx++ ) {
-			rect(
+			MatrixRect(
 				Buffer,
-				(int)(Contact[idx].P1().x), (int)(Contact[idx].P1().y),
-				(int)(Contact[idx].P2().x), (int)(Contact[idx].P2().y),
+				ViewMatrix,
+				Contact[idx],
 				makecol( 255, 255, 255 )
 				);
 		}

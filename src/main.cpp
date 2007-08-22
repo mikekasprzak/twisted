@@ -4,6 +4,7 @@
 // - ------------------------------------------------------------------------------------------ - //
 #include <vector>
 #include <deque>
+#include <iostream>
 using namespace std;
 // - ------------------------------------------------------------------------------------------ - //
 // Select part from Geometry Library //
@@ -19,9 +20,25 @@ using namespace std;
 #include "PickUp.h"
 #include "Game.h"
 // - ------------------------------------------------------------------------------------------ - //
-Matrix3x3 ViewMatrix = Matrix3x3::Identity;
+Matrix3x3 ViewMatrix;
 // - ------------------------------------------------------------------------------------------ - //
 int main( int argc, char* argv ) {
+	cout << "Captain!  We're under attack!" << endl;
+	
+	const Matrix3x3 Identity2(
+		Real::One, Real::Zero, Real::Zero,
+		Real::Zero, Real::One, Real::Zero,
+		Real(0), Real::Zero, Real::One
+		);	
+	
+	ViewMatrix = Identity2;
+	
+	cout << ViewMatrix(0,0) << " " << ViewMatrix(1,0) << " " << ViewMatrix(2,0) << endl;
+	cout << ViewMatrix(0,1) << " " << ViewMatrix(1,1) << " " << ViewMatrix(2,1) << endl;
+	cout << ViewMatrix(0,2) << " " << ViewMatrix(1,2) << " " << ViewMatrix(2,2) << endl;
+	
+	
+	
 	// Initialize Allegro //
 	allegro_init();
 	install_keyboard();
