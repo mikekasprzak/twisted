@@ -229,11 +229,6 @@ public:
 						// Take "most tangent" contact as new normal, if one was found //
 						if ( FoundContact ) {
 							GravityNormal = MostTangentContact;
-							//Matrix3x3 Orientation;
-							Orientation(0,0) = -GravityNormal.Tangent().x;
-							Orientation(0,1) = -GravityNormal.Tangent().y;
-							Orientation(1,0) = -GravityNormal.x;
-							Orientation(1,1) = -GravityNormal.y;
 						}
 					}
 				}
@@ -272,9 +267,19 @@ public:
 //			Orientation(0,1) = Real(Stup).Sin();
 //			Orientation(1,0) = -Real(Stup).Sin();
 //			Orientation(1,1) = Real(Stup).Cos();
-						
-			Orientation(0,2) = -Pos.x;
-			Orientation(1,2) = -Pos.y;
+
+			Matrix3x3 MyOrientation;
+			MyOrientation(0,0) = -GravityNormal.Tangent().x;
+			MyOrientation(0,1) = -GravityNormal.Tangent().y;
+			MyOrientation(1,0) = -GravityNormal.x;
+			MyOrientation(1,1) = -GravityNormal.y;
+
+			Matrix3x3 CameraPosition;	
+			CameraPosition(0,2) = -Pos.x;
+			CameraPosition(1,2) = -Pos.y;
+			
+			Orientation = CameraPosition;
+			Orientation *= MyOrientation;
 		}
 	}
 	

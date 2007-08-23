@@ -27,8 +27,8 @@ int main( int argc, char* argv ) {
 	cout << "Captain!  We're under attack!" << endl;
 	
 	const Matrix3x3 HomeMatrix(
-		Real::Half, Real::Zero, Real::Zero,
-		Real::Zero, -Real::Half, Real::Zero,
+		Real::One, Real::Zero, Real::Zero,
+		Real::Zero, -Real::One, Real::Zero,
 		Real(400), Real(300), Real::One
 		);
 	
@@ -66,6 +66,7 @@ int main( int argc, char* argv ) {
 		while( !key[ KEY_ESC ] && !key[ KEY_TAB ] ) {
 			clear_to_color( Buffer, makecol(30, 0, 0) );
 
+			Orientation = Matrix3x3();
 			Game.Step();
 			ViewMatrix = Orientation;
 			ViewMatrix *= HomeMatrix;
