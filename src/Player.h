@@ -212,8 +212,8 @@ public:
 				{
 					// If controls produce a scenario that suits changing gravity, change it //
 					//if ( (Stick != Real::Zero) && key[ KEY_A ] ) {
-					//if ( (Stick != Real::Zero) && (PressedWalk < 8) ) {
-					if ( (Stick != Real::Zero) ) {
+					if ( (Stick != Real::Zero) && (PressedWalk < 8) ) {
+					//if ( (Stick != Real::Zero) ) {
 						// Take "most tangent" contact as new normal //
 						Vector2D MostTangentContact = Vector2D::Zero;
 						Real MostTangentValue = -Real::One;
