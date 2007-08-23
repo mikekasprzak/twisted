@@ -42,20 +42,14 @@ public:
 	}
 public:
 	void Step() {
-		// Gravity Change cheats //
-		if ( key[ KEY_1 ] )
-			GravityNormal = Vector2D( 0, 1 );
-		if ( key[ KEY_2 ] )
-			GravityNormal = Vector2D( 0, -1 );
-		if ( key[ KEY_3 ] )
-			GravityNormal = Vector2D( 1, 0 );
-		if ( key[ KEY_4 ] )
-			GravityNormal = Vector2D( -1, 0 );
-
-		
 		// Move Players //
 		for ( size_t idx = 0; idx < Player.size(); idx++ ) {
 			Player[idx].Step( Gravity );
+		}
+		
+		// Cheat, set the gravity down... maybe it's not a cheat, but you don't have control yet //
+		if ( key[ KEY_S ] || key[ KEY_O ] ) {
+			GravityNormal = CameraDown;
 		}
 		
 		// Move Blocks //

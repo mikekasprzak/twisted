@@ -22,6 +22,7 @@ using namespace std;
 // - ------------------------------------------------------------------------------------------ - //
 Matrix3x3 ViewMatrix;
 Matrix3x3 Orientation;
+Vector2D CameraDown;
 // - ------------------------------------------------------------------------------------------ - //
 int main( int argc, char* argv ) {
 	cout << "Captain!  We're under attack!" << endl;
@@ -42,6 +43,7 @@ int main( int argc, char* argv ) {
 //	cout << ViewMatrix(0,1) << " " << ViewMatrix(1,1) << " " << ViewMatrix(2,1) << endl;
 //	cout << ViewMatrix(0,2) << " " << ViewMatrix(1,2) << " " << ViewMatrix(2,2) << endl;
 	
+	CameraDown = Vector2D( 0, -1 );
 	
 	
 	// Initialize Allegro //

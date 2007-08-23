@@ -4,6 +4,7 @@
 // - ------------------------------------------------------------------------------------------ - //
 extern Matrix3x3 ViewMatrix;
 extern Matrix3x3 Orientation;
+extern Vector2D CameraDown;
 // - ------------------------------------------------------------------------------------------ - //
 void MatrixRect( BITMAP* Target, const Matrix3x3& Matrix, const Rect2D& Rect, int Color ) {
 	// Get our points //

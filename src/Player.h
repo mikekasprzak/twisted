@@ -202,7 +202,8 @@ public:
 				Friction = Real( 0.9 );
 				
 				// If there were multiple contacts, allow us to scale a neighbouring wall //
-				if ( Contact.Size() > 1 ) {
+				//if ( Contact.Size() > 1 )
+				{
 					// If controls produce a scenario that suits changing gravity, change it //
 					//if ( (Stick != Real::Zero) && key[ KEY_A ] ) {
 					//if ( (Stick != Real::Zero) && (PressedWalk < 8) ) {
@@ -230,7 +231,7 @@ public:
 						if ( FoundContact ) {
 							GravityNormal = MostTangentContact;
 						}
-					}
+					}			
 				}
 				
 				// If there were multiple contacts, see if we were squished //
@@ -260,6 +261,11 @@ public:
 				Friction = Real( 0.998 );
 			}
 			
+
+
+			CameraDown += (CameraDown.Tangent() * GravityNormal) * CameraDown.Tangent() * Real( 0.1 );
+			CameraDown.Normalize();					
+	
 //			static float Stup = 0;
 //			Stup += 0.001;
 			
@@ -269,10 +275,10 @@ public:
 //			Orientation(1,1) = Real(Stup).Cos();
 
 			Matrix3x3 MyOrientation;
-			MyOrientation(0,0) = -GravityNormal.Tangent().x;
-			MyOrientation(0,1) = -GravityNormal.Tangent().y;
-			MyOrientation(1,0) = -GravityNormal.x;
-			MyOrientation(1,1) = -GravityNormal.y;
+			MyOrientation(0,0) = -CameraDown.Tangent().x;
+			MyOrientation(0,1) = -CameraDown.Tangent().y;
+			MyOrientation(1,0) = -CameraDown.x;
+			MyOrientation(1,1) = -CameraDown.y;
 
 			Matrix3x3 CameraPosition;	
 			CameraPosition(0,2) = -Pos.x;
