@@ -25,6 +25,9 @@ public:
 	
 	// Current Friction based on conditions //
 	Real Friction;
+	
+	Real Motion;
+	Real MotionAccelerator;
 
 	// Character not dead flag //
 	bool IsActive;
@@ -121,6 +124,9 @@ public:
 			Pos += Velocity * Friction;
 			
 			// TODO: Remove junk friction above, and make this explicitly fluidic drag. //
+			
+			// Note motion //
+			Motion = Velocity.Magnitude() * (Velocity.Normal() * GravityNormal.Tangent()).Abs() * Friction;
 			
 			// Clear Contacts //
 			Contact.Clear();
@@ -261,9 +267,23 @@ public:
 				Friction = Real( 0.998 );
 			}
 			
+			
+			
+			// Accumulate an ammount based on movement //
+			Real RealMotion = Motion - GravityNormal.Magnitude();
+			// If our motion isn't forward, no motion //
+			if ( RealMotion < Real::Zero ) {
+				RealMotion = 0;
+				MotionAccelerator -= Real( 0.002 );
+			}
+			else {
+				MotionAccelerator = ( MotionAccelerator + Real( 0.001 )).Min( Real(0.04) );
+			}
+			
+			MotionAccelerator = MotionAccelerator.Max( Real::Zero );
+			
 
-
-			CameraDown += (CameraDown.Tangent() * GravityNormal) * CameraDown.Tangent() * Real( 0.1 );
+			CameraDown += (CameraDown.Tangent() * GravityNormal) * CameraDown.Tangent() * MotionAccelerator;
 			CameraDown.Normalize();					
 	
 //			static float Stup = 0;

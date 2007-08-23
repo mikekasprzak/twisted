@@ -47,10 +47,20 @@ public:
 			Player[idx].Step( Gravity );
 		}
 		
-		// Cheat, set the gravity down... maybe it's not a cheat, but you don't have control yet //
+		// Set the gravity down... maybe it's not a cheat, but you don't have control yet //
 		if ( key[ KEY_S ] || key[ KEY_O ] ) {
 			GravityNormal = CameraDown;
 		}
+		
+		if ( key[ KEY_Q ] || key[ KEY_QUOTE ] ) {
+			CameraDown += CameraDown.Tangent() * Real( 0.03 );
+			CameraDown.Normalize();			
+		}
+		
+		if ( key[ KEY_W ] || key[ KEY_COMMA ] ) {
+			CameraDown += CameraDown.Tangent() * Real( -0.03 );
+			CameraDown.Normalize();			
+		}		
 		
 		// Move Blocks //
 		for ( size_t idx = 0; idx < Block.size(); idx++ ) {
