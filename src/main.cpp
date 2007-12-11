@@ -12,6 +12,8 @@ using namespace std;
 #include <Geometry/Vector.h>
 #include <Geometry/Matrix.h>
 #include <Geometry/Rect.h>
+
+#include "Graph/ConditionalGraph.h"
 // - ------------------------------------------------------------------------------------------ - //
 #include "MatrixDraw.h"
 // - ------------------------------------------------------------------------------------------ - //
